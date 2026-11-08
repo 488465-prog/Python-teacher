@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7f2">
+    <title>Python School | Learn by doing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#home" aria-label="Python School home">
+          <span class="brand-mark" aria-hidden="true">{py}</span>
+          <span>python<span class="brand-light">school</span></span>
+        </a>
+        <div class="course-label"><span class="status-dot"></span> Python foundations <span class="label-divider">/</span> Beginner</div>
+        <div class="topbar-right">
+          <button id="video-open-button" class="topbar-action" type="button" aria-label="Watch Python lessons" title="Watch Python lessons"><span aria-hidden="true">▶</span><span class="topbar-action-label">Videos</span></button>
+          <button id="tutorials-open-button" class="topbar-action" type="button" aria-label="Open lesson tutorials" title="Open lesson tutorials"><span aria-hidden="true">✦</span><span class="topbar-action-label">Tutorials</span></button>
+          <div class="menu-wrap">
+            <button id="menu-button" class="topbar-action" type="button" aria-label="Show more options" aria-expanded="false" title="More options">•••</button>
+            <div id="menu-popover" class="menu-popover" hidden>
+              <button id="project-page-button" type="button">Start custom project</button>
+            </div>
+          </div>
+          <div class="streak"><span aria-hidden="true">✳</span> <span id="streak-count">0 day streak</span></div>
+          <button class="profile-button" type="button" aria-label="Your profile">J</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="course-sidebar" aria-label="Course lessons">
+          <div class="sidebar-heading">
+            <span class="eyebrow">YOUR CLASSROOM</span>
+            <div class="classroom-menu-wrap">
+              <button id="classroom-menu-button" class="classroom-menu-button" type="button" aria-expanded="false" aria-controls="classroom-menu">Maze quiz <span aria-hidden="true">⌄</span></button>
+              <div id="classroom-menu" class="classroom-menu" hidden>
+                <button id="maze-quiz-open-button" type="button">Enter a random cave</button>
+              </div>
+            </div>
+          </div>
+          <div class="course-progress">
+            <div class="progress-copy"><span>Course progress</span><strong id="progress-label">0%</strong></div>
+            <div class="progress-track" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar"><span id="progress-fill"></span></div>
+          </div>
+          <nav id="lesson-list" class="lesson-list" aria-label="Python foundations lessons"></nav>
+          <div class="sidebar-footer">
+            <div class="teacher-avatar" aria-hidden="true">M</div>
+            <div><strong>Maya Chen</strong><span>Your Python teacher</span></div>
+            <span class="online-dot" aria-label="Online"></span>
+          </div>
+        </aside>
+
+        <section class="lesson-panel" aria-live="polite">
+          <div class="lesson-meta"><span class="lesson-kicker" id="lesson-kicker">MODULE 01 · THE BASICS</span><span class="lesson-duration" id="lesson-duration">5 min lesson</span></div>
+          <h1 id="lesson-title">Print a greeting</h1>
+          <p class="lesson-intro" id="lesson-intro"></p>
+          <div class="lesson-divider"></div>
+          <div class="concept-block">
+            <div class="concept-icon" aria-hidden="true">01</div>
+            <div>
+              <h2 id="concept-title"></h2>
+              <div id="concept-copy" class="concept-copy"></div>
+            </div>
+          </div>
+          <div class="teacher-note">
+            <div class="teacher-note-avatar" aria-hidden="true">M</div>
+            <div class="teacher-note-body"><div class="teacher-note-heading">Maya <span>YOUR TEACHER</span></div><p id="teacher-note"></p></div>
+          </div>
+          <div class="lesson-bottom">
+            <button id="hint-button" class="hint-button" type="button"><span aria-hidden="true">✳</span> Need a hint?</button>
+            <button id="next-button" class="next-button" type="button" disabled>Run your code to continue <span aria-hidden="true">→</span></button>
+          </div>
+        </section>
+
+        <section class="coding-panel" aria-label="Python code editor">
+          <div class="editor-topline"><div class="file-tab"><span class="python-file-icon">Py</span> main.py <span class="tab-close" aria-hidden="true">×</span></div><span class="editor-language">PYTHON 3</span></div>
+          <div class="editor-toolbar"><span>YOUR CODE</span><button id="reset-button" class="reset-button" type="button" title="Clear your current code">Clear code</button></div>
+          <div class="editor-wrap">
+            <div class="line-numbers" id="line-numbers" aria-hidden="true">1</div>
+            <textarea id="code-editor" aria-label="Write your Python code" placeholder="Write your code here..." spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+          </div>
+          <div class="editor-actions"><span class="keyboard-hint"><kbd>Ctrl</kbd> <kbd>↵</kbd> to run</span><button id="run-button" class="run-button" type="button"><span aria-hidden="true">▶</span> Run code</button></div>
+          <div class="output-panel">
+            <div class="output-heading"><span>OUTPUT</span><span id="run-status" class="run-status">Ready when you are</span></div>
+            <pre id="output" aria-live="polite">Your output will show up here.</pre>
+          </div>
+          <div class="editor-footer"><span><span class="status-dot"></span> Python 3.12</span><span id="output-result">No code run yet</span></div>
+        </section>
+      </main>
+    </div>
+    <section id="custom-project-page" class="custom-project-page" hidden>
+      <div class="project-header">
+        <button id="project-back-button" class="project-back-button" type="button">← Back to lessons</button>
+        <div>
+          <span class="eyebrow">CUSTOM PROJECT</span>
+          <h2>Build your own Python idea</h2>
+        </div>
+      </div>
+      <div class="project-toolbar">
+        <label class="project-name-wrap" for="project-name">
+          <span>Project name</span>
+          <input id="project-name" type="text" value="My Python project" maxlength="80" placeholder="My Python project">
+        </label>
+        <div class="project-actions">
+          <button id="project-run-button" class="run-button" type="button"><span aria-hidden="true">▶</span> Run project</button>
+          <button id="project-save-button" class="secondary-action" type="button">Save</button>
+          <button id="project-export-button" class="secondary-action" type="button">Export .py</button>
+        </div>
+      </div>
+      <div class="project-editor-wrap">
+        <div class="line-numbers project-line-numbers" id="project-line-numbers" aria-hidden="true">1</div>
+        <textarea id="project-editor" aria-label="Write your custom Python project" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off">print("Hello from my custom project!")</textarea>
+      </div>
+      <div class="project-output-panel">
+        <div class="output-heading"><span>PROJECT OUTPUT</span><span id="project-run-status" class="run-status">Ready</span></div>
+        <pre id="project-output" aria-live="polite">Your project output will show up here.</pre>
+      </div>
+    </section>
+
+    <section id="maze-quiz-page" class="maze-quiz-page" aria-labelledby="maze-title" hidden>
+      <header class="maze-header">
+        <button id="maze-back-button" class="maze-back-button" type="button">← Classroom</button>
+        <div class="maze-heading"><span>MAZE QUIZ</span><h1 id="maze-title">Cave escape</h1></div>
+        <button id="maze-new-button" class="maze-new-button" type="button"><span aria-hidden="true">↻</span> New cave</button>
+      </header>
+      <main class="maze-layout">
+        <section class="maze-world-panel" aria-label="Generated cave maze">
+          <div class="maze-world-heading"><span id="maze-status" role="status">Find a route from the explorer to the flag.</span><span class="maze-level-tag">RANDOM CAVE</span></div>
+          <div class="maze-canvas-wrap"><canvas id="maze-canvas" width="612" height="468" aria-label="A randomly generated cave maze with an orange explorer and a flag"></canvas></div>
+          <div class="maze-world-footer">
+            <span><i class="maze-legend-explorer" aria-hidden="true"></i> Explorer</span>
+            <span><i class="maze-legend-flag" aria-hidden="true"></i> Flag</span>
+            <span>Use Python to choose each step</span>
+          </div>
+          <details class="maze-map-details">
+            <summary>Show the cave map</summary>
+            <pre id="maze-map" aria-label="Text map of the cave"></pre>
+          </details>
+        </section>
+        <section class="maze-code-panel" aria-label="Python maze controller">
+          <div class="maze-code-heading"><div><span class="eyebrow">YOUR PROGRAM</span><h2>Guide the explorer</h2></div><span class="maze-python-tag">PYTHON 3</span></div>
+          <p class="maze-instructions">Write Python that calls <code>move("right")</code>, <code>move("down")</code>, <code>move("left")</code>, or <code>move("up")</code>. Loops work too. Each call moves one tile.</p>
+          <textarea id="maze-code-editor" aria-label="Write Python code to guide the explorer" placeholder="Write your Python code here..." spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+          <div class="maze-code-actions"><span>Up to 300 moves per run</span><button id="maze-run-button" class="maze-run-button" type="button"><span aria-hidden="true">▶</span> Run Python</button></div>
+          <div class="maze-output"><div class="maze-output-heading"><span>PROGRAM OUTPUT</span><span id="maze-run-status">Ready when you are</span></div><pre id="maze-output" aria-live="polite">Your output will show up here.</pre></div>
+        </section>
+      </main>
+    </section>
+
+    <section id="tutorial-modal" class="video-modal" role="dialog" aria-modal="true" aria-labelledby="tutorial-title" hidden>
+      <div class="video-dialog">
+        <div class="video-modal-header">
+          <div><span class="eyebrow">LESSON TUTORIAL</span><h2 id="tutorial-title">Print a greeting</h2></div>
+          <button id="tutorial-close-button" class="chat-close-button" type="button" aria-label="Close lesson tutorial">×</button>
+        </div>
+        <div class="tutorial-layout">
+          <div class="video-main tutorial-main">
+            <div class="video-frame-wrap">
+              <video id="tutorial-video-player" controls playsinline preload="metadata" hidden></video>
+              <iframe id="tutorial-video-frame" title="Lesson tutorial video" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>What you will learn</h3>
+            <p id="tutorial-summary">This quick walkthrough shows you how to solve the active lesson step by step.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-title" hidden>
+      <div class="video-dialog">
+        <div class="video-modal-header">
+          <div><span class="eyebrow">VIDEO CLASSROOM</span><h2 id="video-title">Watch and learn</h2></div>
+          <button id="video-close-button" class="chat-close-button" type="button" aria-label="Close video classroom">×</button>
+        </div>
+        <div class="video-layout">
+          <div class="video-main">
+            <div class="video-frame-wrap"><iframe id="video-frame" title="Python lesson video" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            <h3 id="video-current-title">Choose a video lesson</h3>
+            <p id="video-description">Pick a lesson from the playlist to start watching.</p>
+          </div>
+          <nav id="video-playlist" class="video-playlist" aria-label="Video lessons"></nav>
+        </div>
+      </div>
+    </section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
